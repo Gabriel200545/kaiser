@@ -1,0 +1,118 @@
+using System;
+using System.Collections.Generic;
+
+class Hotel
+{
+    static void Main()
+    {
+        List<Huesped> listaHuespedes = new List<Huesped>();
+        List<Habitacion> listaHabitaciones = new List<Habitacion>();
+
+        while (true)
+        {
+            Console.WriteLine("Menú Principal:");
+            Console.WriteLine("1. Registrar huésped");
+            Console.WriteLine("2. Registrar habitación");
+            Console.WriteLine("3. Mostrar lista de huéspedes");
+            Console.WriteLine("4. Mostrar lista de habitaciones");
+            Console.WriteLine("5. Salir");
+
+            Console.Write("Seleccione una opción: ");
+            int opcion = int.Parse(Console.ReadLine());
+
+            switch (opcion)
+            {
+                case 1:
+                    RegistrarHuesped(listaHuespedes);
+                    break;
+                case 2:
+                    RegistrarHabitacion(listaHabitaciones);
+                    break;
+                case 3:
+                    MostrarHuespedes(listaHuespedes);
+                    break;
+                case 4:
+                    MostrarHabitaciones(listaHabitaciones);
+                    break;
+                case 5:
+                    Console.WriteLine("Gracias por utilizar el sistema de registro del hotel. ¡Hasta luego!");
+                    return;
+                default:
+                    Console.WriteLine("Opción no válida. Por favor, seleccione una opción válida.");
+                    break;
+            }
+        }
+    }
+
+    static void RegistrarHuesped(List<Huesped> listaHuespedes)
+    {
+        Console.Write("Ingrese el nombre del huésped: ");
+        string nombre = Console.ReadLine();
+
+        Console.Write("Ingrese el número de habitación: ");
+        int numeroHabitacion = int.Parse(Console.ReadLine());
+
+        Huesped nuevoHuesped = new Huesped(nombre, numeroHabitacion);
+        listaHuespedes.Add(nuevoHuesped);
+
+        Console.WriteLine("Huésped registrado con éxito.");
+    }
+
+    static void RegistrarHabitacion(List<Habitacion> listaHabitaciones)
+    {
+        Console.Write("Ingrese el número de habitación: ");
+        int numero = int.Parse(Console.ReadLine());
+
+        Console.Write("Ingrese el tipo de habitación: ");
+        string tipo = Console.ReadLine();
+
+        Habitacion nuevaHabitacion = new Habitacion(numero, tipo);
+        listaHabitaciones.Add(nuevaHabitacion);
+
+        Console.WriteLine("Habitación registrada con éxito.");
+    }
+
+    static void MostrarHuespedes(List<Huesped> listaHuespedes)
+    {
+        Console.WriteLine("Lista de Huéspedes:");
+
+        foreach (var huesped in listaHuespedes)
+        {
+            Console.WriteLine($"Nombre: {huesped.Nombre}, Habitación: {huesped.NumeroHabitacion}");
+        }
+    }
+
+    static void MostrarHabitaciones(List<Habitacion> listaHabitaciones)
+    {
+        Console.WriteLine("Lista de Habitaciones:");
+
+        foreach (var habitacion in listaHabitaciones)
+        {
+            Console.WriteLine($"Número: {habitacion.Numero}, Tipo: {habitacion.Tipo}");
+        }
+    }
+}
+
+class Huesped
+{
+    public string Nombre { get; }
+    public int NumeroHabitacion { get; }
+
+    public Huesped(string nombre, int numeroHabitacion)
+    {
+        Nombre = nombre;
+        NumeroHabitacion = numeroHabitacion;
+    }
+}
+
+class Habitacion
+{
+    public int Numero { get; }
+    public string Tipo { get; }
+
+    public Habitacion(int numero, string tipo)
+    {
+        Numero = numero;
+        Tipo = tipo;
+    }
+}
