@@ -1,0 +1,20 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Solicita al usuario que ingrese la información necesaria
+        Console.WriteLine("Ingrese la fecha y hora de envío (YYYY-MM-DD HH:mm:ss):");
+        DateTime fechaEnvio = DateTime.Parse(Console.ReadLine());
+
+        Console.WriteLine("Ingrese la fecha y hora estimada de entrega (YYYY-MM-DD HH:mm:ss):");
+        DateTime fechaEntregaEstimada = DateTime.Parse(Console.ReadLine());
+
+        // Calcula el tiempo de espera en horas
+        TimeSpan tiempoDeEspera = fechaEntregaEstimada - fechaEnvio;
+
+        // Muestra el resultado
+        Console.WriteLine($"El tiempo de espera estimado es de {tiempoDeEspera.TotalHours} horas.");
+    }
+}
