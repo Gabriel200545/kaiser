@@ -1,1 +1,33 @@
-primer archivo git
+using System;
+
+namespace FacturacionApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Sistema de Facturación");
+            
+            // Datos del cliente
+            string nombreCliente = "Juan Perez";
+            string direccionCliente = "123 Calle Principal";
+            
+            // Datos del producto
+            string nombreProducto = "Producto A";
+            double precioProducto = 19.99;
+            int cantidadProducto = 2;
+            
+            // Cálculo del total
+            double total = precioProducto * cantidadProducto;
+            
+            // Imprimir factura
+            Console.WriteLine("\nFactura:");
+            Console.WriteLine("Cliente: " + nombreCliente);
+            Console.WriteLine("Dirección: " + direccionCliente);
+            Console.WriteLine("Producto: " + nombreProducto);
+            Console.WriteLine("Precio por unidad: $" + precioProducto);
+            Console.WriteLine("Cantidad: " + cantidadProducto);
+            Console.WriteLine("Total: $" + total);
+        }
+    }
+}
